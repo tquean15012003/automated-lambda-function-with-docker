@@ -5,4 +5,5 @@ module "lambda" {
   app                = var.app
   timeout            = var.timeout
   memory_size        = var.memory_size
+  app_version        = var.app_version
 }

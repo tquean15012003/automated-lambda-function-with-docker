@@ -1,5 +1,4 @@
-# IAM role which dictates what other AWS services the Lambda function
-# may access.
+# IAM role which dictates what other AWS services the Lambda function may access.
 resource "aws_iam_role" "lambda_exec" {
   name = "${var.app}-${var.env}-iam_role"
 
@@ -19,15 +18,17 @@ resource "aws_iam_role" "lambda_exec" {
 EOF
 }
 
+# Get ECR repository info in terraform
 data "aws_ecr_repository" "function_ecr_repo" {
   name = "${var.app}-${var.env}"
 }
 
+# Apply the image to lambda function
 resource "aws_lambda_function" "lambda_function" {
   function_name = "${var.app}-${var.env}"
   timeout       = var.timeout
   memory_size   = var.memory_size
-  image_uri     = "${data.aws_ecr_repository.function_ecr_repo.repository_url}:${var.env}"
+  image_uri     = "${data.aws_ecr_repository.function_ecr_repo.repository_url}:${var.app_version}"
   package_type  = "Image"
 
   role = aws_iam_role.lambda_exec.arn

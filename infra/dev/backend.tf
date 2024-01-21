@@ -8,7 +8,7 @@ terraform {
 }
 
 provider "aws" {
-    region = "ap-southeast-1"
+    region = var.aws_region
     profile = var.aws_profile
     shared_credentials_files = [pathexpand("~/.aws/credentials")]
 }
