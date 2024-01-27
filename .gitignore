@@ -2,3 +2,5 @@
 *.hcl
 terraform.tfstate
 terraform.tfstate.backup
+
+__pycache__/

@@ -1,0 +1,6 @@
+spacy
+pydantic
+spacy_fastlang
+presidio-analyzer
+presidio-anonymizer
+faker
