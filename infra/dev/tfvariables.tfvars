@@ -1,2 +1,2 @@
 timeout     = 600
-memory_size = 2560
+memory_size = 2048
