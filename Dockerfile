@@ -6,6 +6,7 @@ COPY ./requirements.txt ${LAMBDA_TASK_ROOT}
 
 # Step 3: Install the specified packages
 RUN pip install -r requirements.txt
+# Install NLP models. Different from previous deployment script
 RUN python -m spacy download en_core_web_md
 RUN python -m spacy download zh_core_web_md
 
