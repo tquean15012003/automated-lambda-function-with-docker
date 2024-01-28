@@ -27,7 +27,8 @@ def handler(event, context):
                 data=anonymized_text,
                 deanonymizer_mapping=deanonymizer_mapping,
                 status="success",
-            )
+            ).dict()
+        
         elif operation == "deanonymize":
             deanonymizer_mapping = event.get("deanonymizer_mapping", None)
             if deanonymizer_mapping == None:
@@ -36,7 +37,7 @@ def handler(event, context):
             anonymized_text = pii_masking_manager.get_deanonymized_text(
                 text=text, deanonymizer_mapping=deanonymizer_mapping
             )
-            return DeanonymizeResult(data=anonymized_text, status="success")
+            return DeanonymizeResult(data=anonymized_text, status="success").dict()
         else:
             raise ValueError("Invalid operation")
     except Exception as e:
