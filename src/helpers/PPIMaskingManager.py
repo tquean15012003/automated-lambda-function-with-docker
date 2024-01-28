@@ -14,7 +14,7 @@ from pydantic import BaseModel
 
 from spacy import load
 from spacy.language import Language
-from spacy_fastlang import LanguageDetector  # Do not delete
+from spacy_fastlang import LanguageDetector  # Do not delete, it is used to load the language detector pipeline
 
 from presidio_analyzer.nlp_engine import NlpEngineProvider
 from presidio_analyzer import (
@@ -146,7 +146,7 @@ class PIIMaskingManager:
             analyzer_results=analyzer_results,
             operators=self.masking_operators,
         )
-        
+
         self.deanonymizer_mapping = create_anonymizer_mapping(
             text, filtered_analyzer_results, anonymized_results, is_reversed=True
         )
